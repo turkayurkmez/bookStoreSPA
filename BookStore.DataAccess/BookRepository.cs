@@ -1,7 +1,10 @@
 ﻿using BookStore.Core.Repository;
 using BookStore.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 
@@ -23,6 +26,19 @@ namespace BookStore.DataAccess
                          .ThenInclude(x => x.Category)
                          .ToListAsync();
 
+
+
+        }
+
+        public async Task<IList<Book>> IRepository<Book>.GetAllEntitiesWithCriteria(Expression<Func<Book, bool>> criteria)
+        {
+            return await bookDbContext.Books
+                         .Include(x => x.Author)
+                         .Include(x => x.Categories)
+                         .ThenInclude(x => x.Category)
+                         .Where(criteria)
+                         .ToListAsync()
+ 
 
 
         }

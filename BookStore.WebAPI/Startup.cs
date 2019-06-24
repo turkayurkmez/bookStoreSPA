@@ -25,6 +25,8 @@ namespace BookStore.WebAPI
         {
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IRepository<Book>, BookRepository>();
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddDbContext<BookStore.DataAccess.BookDbContext>(options => options.UseSqlServer(Configuration["Data:BookStoreDb:ConnectionString"]));
 
             services.AddCors(options => { options.AddPolicy("Allow", builder => builder.AllowAnyOrigin()); });

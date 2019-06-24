@@ -69,5 +69,20 @@ namespace BookStore.Service.Extensions
 
 
         }
+
+        public static List<CategoryListDto> ConvertToCategoryListDto(this IEnumerable<Category> categories)
+        {
+            List<CategoryListDto> result = new List<CategoryListDto>();
+            categories.ToList().ForEach(x => result.Add(new CategoryListDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+                SubCategoriesCount = x.SubCategories.Count,
+                Categories = x.SubCategories.ConvertToCategoryListDto(),
+                TopCategoryId = x.TopCategoryId
+
+            }));
+            return result;
+        }
     }
 }

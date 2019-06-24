@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BookStore.Service;
+﻿using BookStore.Service;
 using BookStore.Service.Dtos;
-
-using BookStore.WebAPI.Extensions;
-using BookStore.WebAPI.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BookStore.WebAPI.Controllers
 {
@@ -17,20 +12,18 @@ namespace BookStore.WebAPI.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private IBookService service;
+        private readonly IBookService service;
         public BookController(IBookService service)
         {
             this.service = service;
         }
         [EnableCors("Allow")]
         [HttpGet]
-        public async Task<IEnumerable<Service.Dtos.BookListViewModel>> GetBooks()
+        public async Task<IEnumerable<BookListViewModel>> GetBooks()
         {
-            
-            return await service.GetBookLists();          
-
+            return await service.GetBookLists();
         }
-       
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<BookListViewModel>> GetBook(int id)
