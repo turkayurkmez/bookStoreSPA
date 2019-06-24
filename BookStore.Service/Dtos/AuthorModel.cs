@@ -1,4 +1,4 @@
-﻿namespace BookStore.WebAPI.Models
+﻿namespace BookStore.Service.Dtos
 {
     public class AuthorModel
     {
