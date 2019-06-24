@@ -1,5 +1,4 @@
 ﻿using BookStore.DataAccess.Models;
-using BookStore.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess

@@ -18,7 +18,7 @@ namespace BookStore.Service
 
         public async Task<BookListViewModel> GetBook(int id)
         {
-            var model = bookRepository.GetEntityById(id).Result.ConvertToBookListViewModel();
+            BookListViewModel model = bookRepository.GetEntityById(id).Result.ConvertToBookListViewModel();
             return await Task.Run(() => model);
         }
 
