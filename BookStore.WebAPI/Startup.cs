@@ -1,5 +1,7 @@
-﻿using BookStore.Service;
-using BookStore.WebAPI.Models;
+﻿using BookStore.Core.Repository;
+using BookStore.DataAccess;
+using BookStore.DataAccess.Models;
+using BookStore.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +23,9 @@ namespace BookStore.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IBookService,BookService>();
-            services.AddDbContext<BookStore.Service.BookDbContext>(options => options.UseSqlServer(Configuration["Data:BookStoreDb:ConnectionString"]));
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IRepository<Book>, BookRepository>();
+            services.AddDbContext<BookStore.DataAccess.BookDbContext>(options => options.UseSqlServer(Configuration["Data:BookStoreDb:ConnectionString"]));
 
             services.AddCors(options => { options.AddPolicy("Allow", builder => builder.AllowAnyOrigin()); });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

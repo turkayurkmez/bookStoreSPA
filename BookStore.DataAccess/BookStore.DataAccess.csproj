@@ -9,11 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.DataAccess\BookStore.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\BookStore.Core\BookStore.Core.csproj" />
   </ItemGroup>
 
 </Project>

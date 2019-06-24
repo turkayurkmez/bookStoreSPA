@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookStore.DataAccess.Models;
+using BookStore.DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.WebAPI.Models
+namespace BookStore.DataAccess
 {
     public class BookDbContext : DbContext
     {
@@ -43,7 +41,7 @@ namespace BookStore.WebAPI.Models
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
-       
+
 
     }
 }

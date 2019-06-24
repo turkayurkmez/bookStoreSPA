@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BookStore.Service.Models
+namespace BookStore.DataAccess.Models
 {
     public class Author
     {

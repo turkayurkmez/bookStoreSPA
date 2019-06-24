@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookStore.Service;
+using BookStore.Service.Dtos;
+
 using BookStore.WebAPI.Extensions;
 using BookStore.WebAPI.Models;
 using Microsoft.AspNetCore.Cors;
@@ -55,14 +57,14 @@ namespace BookStore.WebAPI.Controllers
             //                       }).Where(x => x.BookId == id).FirstOrDefaultAsync();
             throw new NotImplementedException();
         }
-        [HttpPost]
-        public async Task<ActionResult<Book>> AddBook(Book book)
-        {
-            //bookDbContext.Books.Add(book);
-            //await bookDbContext.SaveChangesAsync();
-            //return CreatedAtAction(nameof(GetBook), new { id = book.BookId }, book);
-            throw new NotImplementedException("");
-        }
+        //[HttpPost]
+        //public async Task<ActionResult<Book>> AddBook(Book book)
+        //{
+        //    //bookDbContext.Books.Add(book);
+        //    //await bookDbContext.SaveChangesAsync();
+        //    //return CreatedAtAction(nameof(GetBook), new { id = book.BookId }, book);
+        //    throw new NotImplementedException("");
+        //}
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(int id, BookListViewModel bookModel)
         {

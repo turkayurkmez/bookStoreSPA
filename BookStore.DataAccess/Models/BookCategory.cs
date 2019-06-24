@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookStore.Service.Models
+namespace BookStore.DataAccess.Models
 {
     public class BookCategory
     {
