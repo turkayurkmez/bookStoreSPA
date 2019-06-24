@@ -84,5 +84,22 @@ namespace BookStore.Service.Extensions
             }));
             return result;
         }
+
+        public static BookListViewModel ConvertToBookListViewModel(this Book book)
+        {
+            return new BookListViewModel
+            {
+                BookId = book.BookId,
+                CoverImage = book.CoverImage,
+                CoverImagePath = book.CoverImagePath,
+                Description = book.Description,
+                Name = book.Name,
+                Price = book.Price,
+                Rate = book.Rate,
+                Author = new AuthorModel { AuthorId = book.AuthorId, FullName = book.Author.GetFullName },
+                AuthorId = book.AuthorId,
+                Categories = book.Categories.Select(c => new CategoryModel { CategoryId = c.CategoryId, Name = c.Category.Name }).ToList()
+            };
+        }
     }
 }

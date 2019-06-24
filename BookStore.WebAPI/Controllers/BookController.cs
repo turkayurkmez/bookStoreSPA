@@ -26,29 +26,11 @@ namespace BookStore.WebAPI.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<BookListViewModel>> GetBook(int id)
+        public async Task<BookListViewModel> GetBook(int id)
         {
-            //return await bookDbContext.Books
-            //                       .Include(x => x.Author)
-            //                       .Include(x => x.Categories)
-            //                       .ThenInclude(x => x.Book)
-            //                       .Select(x => new BookListViewModel
-            //                       {
-            //                           BookId = x.BookId,
-            //                           CoverImage = x.CoverImage,
-            //                           CoverImagePath = x.CoverImagePath,
-            //                           Description = x.Description,
-            //                           Name = x.Name,
-            //                           Price = x.Price,
-            //                           Rate = x.Rate,
-            //                           Author = new AuthorModel { AuthorId = x.Author.AuthorId, FullName = x.Author.GetFullName },
-            //                           Categories = x.Categories.Select(c => new CategoryModel
-            //                           {
-            //                               CategoryId = c.CategoryId,
-            //                               Name = c.Category.Name
-            //                           }).ToList()
-            //                       }).Where(x => x.BookId == id).FirstOrDefaultAsync();
-            throw new NotImplementedException();
+            return await service.GetBook(id);
+         
+           
         }
         //[HttpPost]
         //public async Task<ActionResult<Book>> AddBook(Book book)

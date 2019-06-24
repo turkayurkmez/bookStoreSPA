@@ -3,6 +3,6 @@
     public class AuthorModel
     {
         public string FullName { get; set; }
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
     }
 }

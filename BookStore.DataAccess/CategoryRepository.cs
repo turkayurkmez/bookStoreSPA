@@ -25,5 +25,10 @@ namespace BookStore.DataAccess
         {
             return await bookDbContext.Categories.Include("SubCategories").Where(criteria).ToListAsync();
         }
+
+        public Task<Category> GetEntityById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

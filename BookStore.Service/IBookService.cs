@@ -7,5 +7,6 @@ namespace BookStore.Service
     public interface IBookService
     {
         Task<IEnumerable<BookListViewModel>> GetBookLists();
+        Task<BookListViewModel> GetBook(int id);
     }
 }
