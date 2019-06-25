@@ -24,48 +24,46 @@ namespace BookStore.WebAPI.Controllers
             return await service.GetBookLists();
         }
 
-
+        [EnableCors("Allow")]
         [HttpGet("{id}")]
         public async Task<BookListViewModel> GetBook(int id)
         {
             return await service.GetBook(id);
-         
-           
+
+
         }
-        //[HttpPost]
-        //public async Task<ActionResult<Book>> AddBook(Book book)
-        //{
-        //    //bookDbContext.Books.Add(book);
-        //    //await bookDbContext.SaveChangesAsync();
-        //    //return CreatedAtAction(nameof(GetBook), new { id = book.BookId }, book);
-        //    throw new NotImplementedException("");
-        //}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBook(int id, BookListViewModel bookModel)
+        [EnableCors("Allow")]
+        [HttpPost]
+        public async Task<ActionResult<BookListViewModel>> AddBook(BookListViewModel book)
         {
-            //Book book = bookModel.ConvertToBookFromModel();
-            //if (id != book.BookId)
-            //{
-            //    return BadRequest();
-            //}
-            //var stateChanger = bookDbContext.Entry<Book>(book);
-            //stateChanger.State = EntityState.Modified;
-            //await bookDbContext.SaveChangesAsync();
-            //return NoContent();
-            throw new NotImplementedException("");
+            var addedBook = await service.AddBook(book);
+            return CreatedAtAction(nameof(GetBook), new { id = addedBook.BookId }, addedBook);
+
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutBook(int id, [FromBody]BookListViewModel bookModel)
+        {
+
+            if (id != bookModel.BookId)
+            {
+                return BadRequest();
+            }
+            await service.UpdateBook(bookModel);
+            return NoContent();
+
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
-            throw new NotImplementedException("");
-            //var item = await bookDbContext.Books.FindAsync(id);
-            //if (item == null)
-            //{
-            //    return NotFound();
-            //}
-            //bookDbContext.Books.Remove(item);
-            //await bookDbContext.SaveChangesAsync();
-            //return NoContent();
+            var item = service.GetBook(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            await service.DeleteBook(id);
+            return NoContent();
+
+           
         }
 
 

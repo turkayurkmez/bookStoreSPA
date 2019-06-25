@@ -19,7 +19,7 @@ namespace BookStore.Service.Extensions
             {
                 BookId = bookModel.BookId,
                 AuthorId = bookModel.AuthorId,
-                Categories = bookModel.Categories.ConvertToBookCategoryList(),
+                Categories = bookModel.Categories?.ConvertToBookCategoryList(),
                 CoverImage = bookModel.CoverImage,
                 CoverImagePath = bookModel.CoverImagePath,
                 Description = bookModel.Description,
@@ -96,9 +96,9 @@ namespace BookStore.Service.Extensions
                 Name = book.Name,
                 Price = book.Price,
                 Rate = book.Rate,
-                Author = new AuthorModel { AuthorId = book.AuthorId, FullName = book.Author.GetFullName },
+                Author = new AuthorModel { AuthorId = book.AuthorId, FullName = book.Author?.GetFullName },
                 AuthorId = book.AuthorId,
-                Categories = book.Categories.Select(c => new CategoryModel { CategoryId = c.CategoryId, Name = c.Category.Name }).ToList()
+                Categories = book.Categories.Select(c => new CategoryModel { CategoryId = c.CategoryId, Name = c.Category?.Name }).ToList()
             };
         }
     }

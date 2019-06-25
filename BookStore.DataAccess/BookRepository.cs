@@ -18,6 +18,13 @@ namespace BookStore.DataAccess
         {
             bookDbContext = dbContext;
         }
+
+        public async Task<int> Add(Book entity)
+        {
+            bookDbContext.Books.Add(entity);
+            return await bookDbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Book>> GetAllEntities()
         {
             return await bookDbContext.Books
@@ -48,6 +55,28 @@ namespace BookStore.DataAccess
                                             .ThenInclude(c => c.Category)
                                             .Where(b => b.BookId == id)
                                             .FirstOrDefaultAsync();
+        }
+
+        public async Task Remove(Book entity)
+        {
+            bookDbContext.Remove(entity);
+            await bookDbContext.SaveChangesAsync();
+        }
+
+        public async Task Update(Book entity)
+        {
+
+            var newCategories = entity.Categories;
+            var existingBook = bookDbContext.Books.Include("Categories").Where(x => x.BookId == entity.BookId).FirstOrDefault();
+
+            existingBook.Categories.Clear();
+            existingBook.Categories = newCategories;
+
+            bookDbContext.Attach(existingBook).State = EntityState.Modified;
+            bookDbContext.Entry(existingBook).CurrentValues.SetValues(entity);        
+          
+
+            await bookDbContext.SaveChangesAsync();
         }
     }
 }

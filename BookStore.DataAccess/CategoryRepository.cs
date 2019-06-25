@@ -16,6 +16,12 @@ namespace BookStore.DataAccess
         {
             this.bookDbContext = bookDbContext;
         }
+
+        public Task<int> Add(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Category>> GetAllEntities()
         {
             return await bookDbContext.Categories.Include("SubCategories").Where(x => x.TopCategoryId == null).ToListAsync();
@@ -27,6 +33,16 @@ namespace BookStore.DataAccess
         }
 
         public Task<Category> GetEntityById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Remove(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Category entity)
         {
             throw new NotImplementedException();
         }

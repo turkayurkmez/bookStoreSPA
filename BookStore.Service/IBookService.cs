@@ -8,5 +8,8 @@ namespace BookStore.Service
     {
         Task<IEnumerable<BookListViewModel>> GetBookLists();
         Task<BookListViewModel> GetBook(int id);
+        Task<BookListViewModel> AddBook(BookListViewModel book);
+        Task UpdateBook(BookListViewModel bookModel);
+        Task DeleteBook(int id);
     }
 }

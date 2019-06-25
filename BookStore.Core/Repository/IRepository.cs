@@ -11,5 +11,8 @@ namespace BookStore.Core.Repository
         Task<IEnumerable<T>> GetAllEntities();
         Task<IList<T>> GetAllEntitiesWithCriteria(Expression<Func<T, bool>> criteria);
         Task<T> GetEntityById(int id);
+        Task<int> Add(T entity);
+        Task Update(T entity);
+        Task Remove(T entity);
     }
 }
