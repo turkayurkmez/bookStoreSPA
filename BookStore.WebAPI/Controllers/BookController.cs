@@ -49,7 +49,7 @@ namespace BookStore.WebAPI.Controllers
                 return BadRequest();
             }
             await service.UpdateBook(bookModel);
-            return NoContent();
+            return CreatedAtAction(nameof(GetBook),new { id = bookModel.BookId },bookModel);
 
         }
         [HttpDelete("{id}")]
