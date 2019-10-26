@@ -1,5 +1,6 @@
 ﻿using BookStore.Service;
 using BookStore.Service.Dtos;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace BookStore.WebAPI.Controllers
             this.categoryService = categoryService;
         }
         // GET: api/Category
+        [EnableCors("Allow")]
         [HttpGet]
         public async Task<IEnumerable<CategoryListDto>> Get()
         {
@@ -24,8 +26,8 @@ namespace BookStore.WebAPI.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "All")]
+        public string All(int id)
         {
             return "value";
         }

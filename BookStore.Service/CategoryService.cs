@@ -53,6 +53,9 @@ namespace BookStore.Service
             return menu;
         }
 
-         
+        public string GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

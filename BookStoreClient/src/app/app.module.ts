@@ -7,18 +7,24 @@ import { NavComponent } from './nav/nav.component';
 import { BookComponent } from './book/book.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookService } from './book/book.service';
+import { FormsModule } from '@angular/forms';
+import { BookFilterPipe } from './book/book-filter.pipe';
+import { CategoryComponent } from './category/category.component' ;
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    BookComponent
+    BookComponent,
+    BookFilterPipe,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [BookService, HttpClientModule],
   bootstrap: [AppComponent]

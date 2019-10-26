@@ -1,0 +1,56 @@
+<h1>Kitaplar</h1>
+
+<div class="row">
+  <div class="col-12">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="filterText" class="form-control">
+      <p *ngIf="keyword"> Aranacak kelime: {{filterText}}</p>
+      <button class="btn btn-lg m-1 btn-danger">Ara</button>
+    </div>
+  </div>
+  <div class="col-12">
+    <div>      
+      <p class="text-success">{{ gender | i18nSelect: inviteMap }}</p>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="basket.length>0;else empty">
+       Sepetinizde şu an {{ basket.length}} adet ürün var.
+    </div>
+ 
+  </div>
+ <ng-template #empty>
+  <div class="alert alert-danger" >Sepette ürün yok</div>
+ </ng-template>
+  <div class="card-deck">
+    <div class="card" style="width: 20rem;" *ngFor="let book of books | bookFilter:filterText">
+      <div class="card-header">
+        <img src="{{book.coverImagePath}}" class="card-img-top" alt="">
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{book.name | titlecase }}</h4>
+        
+          <p>
+            <span class="card-text">
+              {{book.description}}
+            </span>
+          </p>
+          <p>
+            Yazar:
+            <span class="card-text ">
+              {{book.author.fullName | uppercase}}
+            </span>
+          </p>
+          <p>
+            Fiyat:
+            <span class="card-text">
+              {{book.price | currency:'TRY': 'symbol':'2.2-4' }}
+            </span>            
+          </p>
+       
+      </div>
+      <div class="card-footer">
+         <button class="btn btn-danger" (click)="addToBasket(book)">Sepete Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
+

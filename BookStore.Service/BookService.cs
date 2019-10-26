@@ -47,7 +47,6 @@ namespace BookStore.Service
         {
             Book book = bookModel.ConvertToBookFromModel();
             await bookRepository.Update(book);
-          
         }
     }
 }

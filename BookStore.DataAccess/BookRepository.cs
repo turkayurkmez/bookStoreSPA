@@ -7,8 +7,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-
-
 namespace BookStore.DataAccess
 {
     public class BookRepository : IRepository<Book>
@@ -73,8 +71,8 @@ namespace BookStore.DataAccess
             existingBook.Categories = newCategories;
 
             bookDbContext.Attach(existingBook).State = EntityState.Modified;
-            bookDbContext.Entry(existingBook).CurrentValues.SetValues(entity);        
-          
+            bookDbContext.Entry(existingBook).CurrentValues.SetValues(entity);
+
 
             await bookDbContext.SaveChangesAsync();
         }
