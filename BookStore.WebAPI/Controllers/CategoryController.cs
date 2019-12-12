@@ -26,10 +26,12 @@ namespace BookStore.WebAPI.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet("{id}", Name = "All")]
-        public string All(int id)
+        [Route("All")] 
+        [HttpGet]
+        public async Task<IEnumerable<CategoryListDto>> All()
         {
-            return "value";
+            Task<IEnumerable<CategoryListDto>> result = categoryService.GetAll();
+            return await result;
         }
 
         // POST: api/Category

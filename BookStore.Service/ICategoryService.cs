@@ -7,6 +7,6 @@ namespace BookStore.Service
     public interface ICategoryService
     {
         Task<IEnumerable<CategoryListDto>> GetCategoryLists();
-        string GetAll();
+        Task<IEnumerable<CategoryListDto>> GetAll();
     }
 }

@@ -29,7 +29,12 @@ namespace BookStore.WebAPI
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddDbContext<BookStore.DataAccess.BookDbContext>(options => options.UseSqlServer(Configuration["Data:BookStoreDb:ConnectionString"]));
 
-            services.AddCors(options => { options.AddPolicy("Allow", builder => builder.AllowAnyOrigin()); });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Allow", builder => builder.AllowAnyOrigin());
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
 

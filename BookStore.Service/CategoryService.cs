@@ -33,8 +33,6 @@ namespace BookStore.Service
 
                 var childCategories = repository.GetAllEntitiesWithCriteria(x => x.TopCategoryId == category.Id).Result.ConvertToCategoryListDto();
 
-
-
                 if (category.SubCategoriesCount != null && category.SubCategoriesCount != 0)
                 {
                     category.Categories = new List<CategoryListDto>();
@@ -53,9 +51,17 @@ namespace BookStore.Service
             return menu;
         }
 
-        public string GetAll()
+        public async Task<IEnumerable<CategoryListDto>> GetAllCategories()
         {
-            throw new NotImplementedException();
+            var allCategories = repository.GetAllEntities().Result.ConvertToCategoryListDto();
+            return await Task.Run(() => allCategories);
+
+        }
+
+        public async Task<IEnumerable<CategoryListDto>> GetAll()
+        {
+            var allCategories = repository.GetAllEntities().Result.ConvertToCategoryListDto();
+            return await Task.Run(() => allCategories);
         }
     }
 }
