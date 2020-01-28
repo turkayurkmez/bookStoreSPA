@@ -2,7 +2,6 @@
 using BookStore.Service.Dtos;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -36,7 +35,7 @@ namespace BookStore.WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<BookListViewModel>> AddBook(BookListViewModel book)
         {
-            var addedBook = await service.AddBook(book);
+            BookListViewModel addedBook = await service.AddBook(book);
             return CreatedAtAction(nameof(GetBook), new { id = addedBook.BookId }, addedBook);
 
         }
@@ -49,13 +48,13 @@ namespace BookStore.WebAPI.Controllers
                 return BadRequest();
             }
             await service.UpdateBook(bookModel);
-            return CreatedAtAction(nameof(GetBook),new { id = bookModel.BookId },bookModel);
+            return CreatedAtAction(nameof(GetBook), new { id = bookModel.BookId }, bookModel);
 
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
-            var item = service.GetBook(id);
+            Task<BookListViewModel> item = service.GetBook(id);
             if (item == null)
             {
                 return NotFound();
@@ -63,7 +62,7 @@ namespace BookStore.WebAPI.Controllers
             await service.DeleteBook(id);
             return NoContent();
 
-           
+
         }
 
 

@@ -12,7 +12,7 @@ namespace BookStore.Service.Extensions
             List<BookCategory> bookCategories = new List<BookCategory>();
             categories.ForEach(c => bookCategories.Add(new BookCategory { CategoryId = c.CategoryId }));
 
-         
+
             return bookCategories;
         }
         public static Book ConvertToBookFromModel(this BookListViewModel bookModel)
@@ -33,7 +33,7 @@ namespace BookStore.Service.Extensions
             return book;
         }
 
-      
+
         public static List<CategoryListDto> ConvertToCategoryListDto(this ICollection<Category> categories)
         {
             List<CategoryListDto> categoryListDtos = new List<CategoryListDto>();

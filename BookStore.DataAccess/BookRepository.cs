@@ -64,8 +64,8 @@ namespace BookStore.DataAccess
         public async Task Update(Book entity)
         {
 
-            var newCategories = entity.Categories;
-            var existingBook = bookDbContext.Books.Include("Categories").Where(x => x.BookId == entity.BookId).FirstOrDefault();
+            ICollection<BookCategory> newCategories = entity.Categories;
+            Book existingBook = bookDbContext.Books.Include("Categories").Where(x => x.BookId == entity.BookId).FirstOrDefault();
 
             existingBook.Categories.Clear();
             existingBook.Categories = newCategories;

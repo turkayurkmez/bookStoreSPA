@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BookStore.Service.Dtos
+﻿namespace BookStore.Service.Dtos
 {
     public class CategoryModel
     {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace BookStore.Service.Dtos
 {
@@ -16,7 +14,7 @@ namespace BookStore.Service.Dtos
         public string CoverImagePath { get; set; }
         public byte[] CoverImage { get; set; }
         public AuthorModel Author { get; set; }
-       
+
         public int? AuthorId { get; set; }
         public List<CategoryModel> Categories { get; set; }
     }

@@ -26,7 +26,7 @@ namespace BookStore.WebAPI.Controllers
         }
 
         // GET: api/Category/5
-        [Route("All")] 
+        [Route("All")]
         [HttpGet]
         public async Task<IEnumerable<CategoryListDto>> All()
         {
